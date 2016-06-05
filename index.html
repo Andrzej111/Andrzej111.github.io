@@ -1,84 +1,49 @@
 <!DOCTYPE html>
-<html ng-app="app">
-	<head lang="en">
-		<title ng-bind-html="title" ng-cloak>{{title}}</title>
-		<meta charset=utf-8></meta>
-		<meta content-type="text/html"></meta>
-		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta> -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-		    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <html ng-app='andrzejapp'>
+    <head>
+    <meta charset=utf-8></meta>
+    <meta content-type="text/html"></meta>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=1">
-		<link href="css/style1.css" type="text/css" rel="stylesheet">
-		<link href="css/animations1.css" type="text/css" rel="stylesheet">
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-		<script src="js/app.js"></script>
+      <!-- SCROLLS -->
+      <!-- load bootstrap and fontawesome via CDN -->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
 
-	</head>
+      <!-- SPELLS -->
+      <!-- load angular and angular route via CDN -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+      <script src="script.js"></script>
+    </head>
+    <body ng-controller='mainController'>
+<body class="site-wrapper-inner">
 
+        <!-- HEADER AND NAVBAR -->
+        <header>
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Angular Routing Example</a>
+                </div>
 
-	<body class="site-wrapper-inner">
+                <ul class="nav navbar-nav">
+                    <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="#about"><i class="fa fa-shield"></i> About</a></li>
+                    <li><a href="#contact"><i class="fa fa-comment"></i> Contact</a></li>
+                </ul>
+            </div>
+            </nav>
+        </header>
 
-	 <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href='<?php echo "/".$action; ?>' ng-bind-html="title" ng-cloak>{{title}}</a>
+        <!-- MAIN CONTENT AND INJECTED VIEWS -->
+        <div id="main">
+        <div ng-view> </div>
+
+            <!-- angular templating -->
+            <!-- this is where content will be injected -->
+
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li ng-class="{true: 'active'}[title == 'Some MtG Decks']"><a href="/">Home</a></li>
-            <li ng-class="{true: 'active'}[title == 'Post your deck']"><a href="/post">Post your deck</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-	<script src="js/index_controller.js"></script>
-    <div class="container" id="content" ng-controller='decksController'>
-    <div class="jumbotron">
-		<section class="deck" ng-show="!got_response">Loading decks</section>
-		<section  class="deck mastfoot" ng-repeat="deck in decks" ng-show="got_response" ng-controller="singleDeck as m" id="deck.name">
 
-			<header class="inner-cover">
-				<h2 class="deck-name">{{deck.name}}</h2>
-				<p><button class="draw btn-lg btn-success" ng-click='m.draw_hand(7); m.number_draw=6'>Draw sample hand!
-				</button>
-				<button class="draw btn-lg btn-primary" ng-click='m.name_hand=null; setTimeout(m.draw_hand(m.number_draw),1000); m.number_draw=m.number_draw-1'>Mulligan!
-				</button></p>
-				<div class="images" ng-if="m.name_hand">
-					<img class="card-img" ng-repeat="cos in m.name_hand track by $index" ng-src="http://gatherer.wizards.com/Handlers/Image.ashx?type=card&name={{cos}}" title="{{cos}}">			
-					</img>
-				</div>
-			</header>		
-			
-			<article>
-				<ul class="categories" ng-show="m.expanded" >
-					<li class="one-cat" ng-repeat="cards in deck.cards">
-						<h4 >{{cards.category}}</h4>
-						<ul>
-							<li ng-repeat="position in cards.cards_array">{{position.count}} <a ng-href='#{{deck.name}}' ng-mouseover='m.hovered(position.name)'>{{position.name}}</a></li>
-						</ul>
-					</li>
-				</ul>
-				<div class="hovered-image anchor" ng-show="m.expanded">
-					<a ng-href="{{m.hovered_card}}" target="_blank"><img id='{{deck.name}}' ng-src="{{m.hovered_link}}"></img></a>
-				</div>
-			</article>
+    </body>
+    </html>
 
-			<footer class="placeholder">
-				<button class="more btn-lg btn-default" ng-click="m.more()">{{m.more_text}}</button>
-			</footer>
-
-		</section>	<!-- /deck -->
-		</div>
-		</div>
-	</body>
-</html>
