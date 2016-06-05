@@ -1,0 +1,119 @@
+html,body{
+	min-width: 320px;
+ 	margin: 0px !important; padding: 0px !important; border: 0px !important; 
+	/*height: 100%;*/
+	/*height: 100%;*/
+}
+body{
+
+	/*position: fixed;*/
+	color: darkslategray;
+	background: linear-gradient(to right, lightcyan,lavender);
+}
+
+div.deck {
+	display: list-item;
+	max-width: 100%;
+	list-style-image: none;
+	list-style-type: none;
+	/*position: relative;*/
+	padding: 20px;
+	margin: 0px;
+	margin-bottom: 50px;
+	background-color: lightseagreen;
+	border: 5px;
+	border-style: solid;
+	border-radius: 20px;
+	background-origin: border-box;
+ 	list-style-position: outside; 
+}
+div.container{
+ 	margin: 0px !important; padding: 0px !important; border: 0px !important; 
+}
+.category{
+	list-style-image: none;
+	list-style-type: none;
+	/*position: absolute;*/
+	/*left : 10px;*/
+}
+ul,li {
+	margin-left: 2%;
+	padding-left: 2%;	/**/
+	margin-right: 4%;
+}
+div{
+	/*margin: 0px !important; border: 0px !important;*/
+	 padding: 5px;
+	 margin:5px;
+}
+div,p{
+	word-break:break-all;
+}
+
+
+
+table.list{
+	border : 0px solid black;
+	border-collapse : collapse;
+	border-radius : 20px !important;
+	padding : 0px !important;
+	margin : 0px !important;
+}
+
+tbody{
+	margin: 0px !important; padding: 0px !important; border: 0px !important;}
+
+tr{
+	margin:0px !important;
+	border:0px;
+	padding: 5px;
+	color: lightsalmon;
+}
+
+tr:nth-child(2n){
+	background-color:  lightsteelblue;
+	color: black;	
+}
+td{
+		padding-left: 5px;	
+}
+
+/*
+div.background1,div.background2{
+	margin: 0px !important; padding: 0px !important; border: 0px !important;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	position: fixed;
+	opacity: 0.5;
+	z-index: -3;
+	width: 3920px;
+	height: 3080px;
+	max-width: 100%;
+	max-height: 100%;
+	background-origin: border-box;
+}
+div.background1{
+	background-image: url('../images/Waif.jpg');
+	animation: bg1 10s linear 0s infinite;
+}
+div.background2{
+	background-image: url('../images/Reckless.jpg');
+	opacity:0;
+	animation: bg2 10s linear 0s infinite;
+}
+*/
+
+/*@keyframes bg1 {
+	0% {opacity: 1;}
+	25% {opacity: 0;}
+	50% {opacity: 0;}	
+	75%{opacity: 1;}
+	100%{opacity: 1;}
+}
+@keyframes bg2 {
+	0% {opacity: 0;}
+	25% {opacity: 1;}
+	50% {opacity: 1;}	
+	75%{opacity: 0;}
+	100%{opacity: 0;}
+}*/

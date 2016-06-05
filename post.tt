@@ -1,0 +1,56 @@
+<script src="js/post_controller.js"></script>
+<script>
+$(document).ready(function(){
+	// $('textarea').attr('value','Lands:\n4 Swamp\nCreatures:\n4 Griselbrand\nSideboard:\n4 Grafdigger\'s Cage');
+});
+
+</script>
+<div class="container" id="content" ng-controller='postController as p'>
+<div class="jumbotron">
+  	<form role="form" ng-submit="p.submit()">
+  		<h2>Your decklist:</h2>
+  	    <div class="form-group">	
+	    	<textarea class="form-control" rows="10" id="decklist" ng-model="p.decklist"></textarea>
+	    </div>
+	    <button type="submit" class="btn-lg btn-primary text-center"  value="Submit">Post It!</button>
+	</form>
+
+	<section  class="deck mastfoot" ng-repeat="deck in decks" ng-show="got_response" ng-controller="singleDeck as m" id="deck.name">
+
+		<header class="inner-cover">
+			<h2 class="deck-name">{{deck.name}}</h2>
+			<p><button class="draw btn-lg btn-success" ng-click='m.draw_hand(7); m.number_draw=6'>Draw sample hand!
+			</button>
+			<button class="draw btn-lg btn-primary" ng-click='m.name_hand=null; setTimeout(m.draw_hand(m.number_draw),1000); m.number_draw=m.number_draw-1'>Mulligan!
+			</button></p>
+			<div class="images" ng-if="m.name_hand">
+				<img class="card-img" ng-repeat="cos in m.name_hand track by $index" ng-src="http://gatherer.wizards.com/Handlers/Image.ashx?type=card&name={{cos}}" title="{{cos}}">			
+				</img>
+			</div>
+		</header>		
+		
+		<article>
+			<ul class="categories" ng-show="m.expanded" >
+				<li class="one-cat" ng-repeat="cards in deck.cards">
+					<h4 >{{cards.category}}</h4>
+					<ul>
+						<li ng-repeat="position in cards.cards_array">{{position.count}} <a ng-href='#{{deck.name}}' ng-mouseover='m.hovered(position.name)'>{{position.name}}</a></li>
+					</ul>
+				</li>
+			</ul>
+			<div class="hovered-image anchor" ng-show="m.expanded">
+				<a ng-href="{{m.hovered_card}}" target="_blank"><img id='{{deck.name}}' ng-src="{{m.hovered_link}}"></img></a>
+			</div>
+		</article>
+
+		<footer class="placeholder">
+			<button class="more btn-lg btn-default" ng-click="m.more()">{{m.more_text}}</button>
+		</footer>
+
+	</section>	<!-- /deck -->
+	</div>
+	    <!-- <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a> -->
+</div>
+	<!-- <footer class="footer"><p class="lead">Footer</p></footer> -->
+</body>
+</html>
